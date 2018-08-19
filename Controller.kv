@@ -1,0 +1,81 @@
+#:kivy 1.10.1
+#: import CardTransition kivy.uix.screenmanager.CardTransition
+#: import Button kivy.uix.button.Button
+#: import add add
+
+ScreenManagement:
+    MainScreen:
+    ScreenTwo:
+
+<Button>:
+    font_size: 15
+    size_hint: 0.15, 0.07
+    background_normal: ''
+    background_color: (0.384, 0, 0.933, 1.0)
+    font_name: 'Roboto'
+
+<MainScreen>:
+    name: "main"
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Button:
+        pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+        text: 'CONTROLLER'
+        size_hint: 1, 0.1
+        disabled: True
+    Button:
+        pos_hint: {'center_x': 0.5, 'center_y': 0.7}
+        text: 'BUTTON1'
+        on_release: add.add(10,12)
+    Button:
+        pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+        text: 'BUTTON2'
+        on_release: add.add(10,12)
+    Button:
+        pos_hint: {'center_x': 0.5, 'center_y': 0.3}
+        text: 'BUTTON3'
+        on_release: 
+            app.root.transition = CardTransition(direction='right')
+            app.root.current = "ScreenTwo"
+    Button:
+        pos_hint: {'center_x': 0.5, 'center_y': 0.1}
+        text: 'BUTTON4'
+        on_release: add.add(10,12)
+        
+<ScreenTwo>:
+    name: "ScreenTwo"
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    orientation: "vertical"
+    Button:
+        pos_hint: {'center_x': 0.5, 'center_y': 0.9}
+        text: 'PAGE2'
+        size_hint: 1, 0.1
+        disabled: True
+    Button:
+        pos_hint: {'center_x': 0.5, 'center_y': 0.6}
+        text: 'BUTTON1'
+        on_release: add.add(10,12)
+
+    Button:
+        pos_hint: {'center_x': 0.5, 'center_y': 0.4}
+        text: 'BUTTON2'
+        on_release: add.add(10,12)
+
+    Button:
+        text: 'Go Back'
+        pos_hint: {'center_x': 0.5, 'center_y': 0.2}
+        background_color: (1, 1, 1, 1)
+        color: (0.004, 0.529, 0.525, 1.0)
+        on_release:
+            app.root.transition = CardTransition(direction='left') 
+            app.root.current = "main"

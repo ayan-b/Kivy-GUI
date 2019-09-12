@@ -1,14 +1,16 @@
 #:kivy 1.10.1
 #: import CardTransition kivy.uix.screenmanager.CardTransition
 #: import Button kivy.uix.button.Button
-#: import add add
+#: import addd add.addd
+#: import Factory kivy.factory.Factory
+
 
 ScreenManagement:
     MainScreen:
     ScreenTwo:
 
 <Button>:
-    font_size: 15
+    font_size: sp(15)
     size_hint: 0.15, 0.07
     background_normal: ''
     background_color: (0.384, 0, 0.933, 1.0)
@@ -17,11 +19,10 @@ ScreenManagement:
 <MainScreen>:
     name: "main"
     canvas.before:
-        Color:
-            rgba: 1, 1, 1, 1
         Rectangle:
             pos: self.pos
             size: self.size
+            source: 'statics/img/High_Voltage_Lab.jpg'
     Button:
         pos_hint: {'center_x': 0.5, 'center_y': 0.9}
         text: 'CONTROLLER'
@@ -30,11 +31,11 @@ ScreenManagement:
     Button:
         pos_hint: {'center_x': 0.5, 'center_y': 0.7}
         text: 'BUTTON1'
-        on_release: add.add(10,12)
+        on_release: root.open_popup(reading=addd(10,12))
     Button:
         pos_hint: {'center_x': 0.5, 'center_y': 0.5}
         text: 'BUTTON2'
-        on_release: add.add(10,12)
+        on_release: root.open_popup(reading=addd(10,12))
     Button:
         pos_hint: {'center_x': 0.5, 'center_y': 0.3}
         text: 'BUTTON3'
@@ -44,17 +45,15 @@ ScreenManagement:
     Button:
         pos_hint: {'center_x': 0.5, 'center_y': 0.1}
         text: 'BUTTON4'
-        on_release: add.add(10,12)
+        on_release: root.open_popup(reading=addd(10,12))
         
 <ScreenTwo>:
     name: "ScreenTwo"
     canvas.before:
-        Color:
-            rgba: 1, 1, 1, 1
         Rectangle:
             pos: self.pos
             size: self.size
-
+            source: 'statics/img/High_Voltage_Lab.jpg'
     orientation: "vertical"
     Button:
         pos_hint: {'center_x': 0.5, 'center_y': 0.9}
@@ -64,13 +63,11 @@ ScreenManagement:
     Button:
         pos_hint: {'center_x': 0.5, 'center_y': 0.6}
         text: 'BUTTON1'
-        on_release: add.add(10,12)
-
+        on_release: root.open_popup(reading=addd(10,12))
     Button:
         pos_hint: {'center_x': 0.5, 'center_y': 0.4}
         text: 'BUTTON2'
-        on_release: add.add(10,12)
-
+        on_release: root.open_popup(reading=addd(10,12))
     Button:
         text: 'Go Back'
         pos_hint: {'center_x': 0.5, 'center_y': 0.2}
